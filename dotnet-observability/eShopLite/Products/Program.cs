@@ -5,7 +5,7 @@ using Products.Endpoints;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProductDataContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("ProductsContext") ?? throw new InvalidOperationException("Connection string 'ProductsContext' not found.")));
-
+builder.Services.AddObservability("Products", builder.Configuration);
 // Add observability code here
 
 // Add services to the container.
